@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:taskmanagement/pages/tasks/task_list_vew.dart';
+import 'package:taskmanagement/services/base_client.dart';
 import 'package:taskmanagement/theme.dart';
 
 import 'pages/index.dart';
 
 void main() {
   usePathUrlStrategy();
+  BaseClient.BaseUrl = 'https://localhost:7111/api/';
   runApp(const ProviderScope(child: MyApp()));
 }
 

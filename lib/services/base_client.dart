@@ -6,7 +6,7 @@ class BaseClient {
 
   late Dio dio = Dio();
   late SharedPreferences _prefs;
-  final String _baseUrl = 'https://localhost:7111/api/';
+  static String BaseUrl = '';
 
   final int _connectTimeout = 20000;
 
@@ -19,7 +19,7 @@ class BaseClient {
 
     var jwtToken = _prefs.getString('jwtToken') ?? '';
     dio = Dio(BaseOptions(
-      baseUrl: _baseUrl,
+      baseUrl: BaseUrl,
       connectTimeout: _connectTimeout,
       headers: Map.from(
         {
@@ -32,7 +32,7 @@ class BaseClient {
   Future<Response> get(String path,
           {Map<String, dynamic>? queryParameters, Options? options}) async =>
       await dio.get(
-        _baseUrl + path,
+        BaseUrl + path,
         queryParameters: queryParameters,
         options: options,
       );
